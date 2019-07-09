@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def user_new
-        @user = User.new #created
   end
 
   def user_create
@@ -10,8 +9,8 @@ class SessionsController < ApplicationController
       flash[:info] = "Login Successful!"
       redirect_to "/"
     else
-      @error = "Incorrect username or password."
-      render :new
+      flash[:info] = "Incorrect username or password."
+      render :user_new
     end
   end
 
@@ -21,7 +20,6 @@ class SessionsController < ApplicationController
   end
 
   def restaurant_new
-    @restaurant = Restaurant.new #created 
   end
 
   def restaurant_create
@@ -31,8 +29,8 @@ class SessionsController < ApplicationController
       flash[:info] = "Login Successful!"
       redirect_to "/"
     else
-      @error = "Incorrect username or password."
-      render :new
+      flash[:info] = "Incorrect username or password."
+      render :restaurant_new
     end
   end
 
