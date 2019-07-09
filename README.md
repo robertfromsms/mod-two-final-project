@@ -21,4 +21,23 @@ Things you may want to cover:
 
 * Deployment instructions
 
+** User stories
+
+    User
+    1. User should be able to create a profile.
+    2. User should be able to log in profile.
+    3. User should be able to make order(choose restaurant, choose up to 3 meals, then click place order).
+    4. User should be able to view all orders.
+    5. User should be able to delete all made orders. 
+
+    Restaurant
+    1. Restaurant should be able to create a profile.
+    2. Restaurant should be able to log in profile.
+    3. Restaurant should be able to create items.
+    4. Restaurant should be able to edit items.
+    5. Restaurant should be able to delete items.
+    6. Restaurant should be view all orders made.
+    7. Restaurant should be able to delete orders.
+    *** Click to show order's status {up||delivered||in progress}
+
 * ...
