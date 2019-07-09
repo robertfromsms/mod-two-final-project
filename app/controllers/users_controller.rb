@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     else
       flash[:info] = "Something went wrong. Try again."
       render :edit
+    end
   end
 
   def destroy
