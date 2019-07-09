@@ -1,13 +1,16 @@
 class UsersController < ApplicationController
+  # before_action :authenticate!, except: [:home, :new]
   def home
   end
 
   def show
     @user = User.find(params[:id])
+    render :show
   end
 
   def new
     @user = User.new
+    render :new
   end
 
   def create
@@ -15,13 +18,14 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to user_path(@user)
     else
-      flash[:info] = "Something went wrong. Try again."
+      flash[:info] = "Something went wrong during user creation. Try again."
       render :new
     end
   end
 
   def edit
     @user = User.find(params[:id])
+    render :edit
   end
 
   def update
@@ -31,9 +35,17 @@ class UsersController < ApplicationController
     else
       flash[:info] = "Something went wrong. Try again."
       render :edit
+    end
   end
 
   def destroy
+    @user = User.find(params[:id])
+    # if @user == current_user
+    @user.destroy
+    # else
+    # flash[:info] = "You have to be logged in to do that."
+    # end
+    redirect_to "/"
   end
 
   private
