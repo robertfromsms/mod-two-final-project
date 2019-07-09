@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def user_new
+        @user = User.new #created
   end
 
   def user_create
@@ -20,6 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def restaurant_new
+    @restaurant = Restaurant.new #created 
   end
 
   def restaurant_create
