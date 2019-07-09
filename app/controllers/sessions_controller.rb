@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:info] = "Login Successful!"
-      redirect_to "/"
+      redirect_to user_path(@user)
     else
       flash[:info] = "Incorrect username or password."
       render :user_new
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     if @restaurant && @restaurant.authenticate(params[:password])
       session[:user_id] = @restaurant.id
       flash[:info] = "Login Successful!"
-      redirect_to "/"
+      redirect_to restaurant_path(@restaurant)
     else
       flash[:info] = "Incorrect username or password."
       render :restaurant_new
