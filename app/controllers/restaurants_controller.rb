@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  # before_action :authenticate!, except: [:index, :show, :new]
+  before_action :rest_authenticate!, except: [:index, :show, :new, :create]
 
   def index
     @restaurants = Restaurant.all
@@ -8,6 +8,8 @@ class RestaurantsController < ApplicationController
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @restaurant_menu = @restaurant.menu_items
+    @current_rest = current_rest
     render :show
   end
 
@@ -19,9 +21,9 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
-      redirect_to restaurant_path(@restaurant)
+      redirect_to "/restaurants/login"
     else
-      flash[:info] = "Something went wrong during user creation. Try again."  
+      flash[:info] = "Something went wrong during restaurant registration. Try again."  
       render :new
     end
   end
@@ -34,8 +36,9 @@ class RestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update(restaurant_params)
-      flash[:info] = "Update successful!"
-      redirect_to pet_path(@pet.id)
+      flash[:info] = "Update successful! Logging you out."
+      session[:restuser_id] = nil
+      redirect_to "/"
     else
       flash[:info] = "Something went wrong. Try again."
       render :edit
@@ -44,11 +47,8 @@ class RestaurantsController < ApplicationController
 
   def destroy
     @restaurant = Restaurant.find(params[:id])
-  #   if @pet.person == current_user
     @restaurant.destroy
-  #   else
-  #     flash[:info] = "You are not allowed to delete other peoples pets."
-  #   end
+    flash[:info] = "We hope Delieverd can do business with your establishment in the future."
     redirect_to "/"
   end
 
