@@ -1,5 +1,9 @@
 <h1>Home</h1>
 
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
+<% end %>
+
 <%= button_to "Users", users_login_path, method: :get %>
 <br>
 <%= button_to "Restaurants", restaurants_login_path, method: :get %>
