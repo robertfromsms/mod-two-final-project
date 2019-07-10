@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      flash[:info] = "Update successful! Logging you out."
       redirect_to user_path(@user)
     else
       flash[:info] = "Something went wrong. Try again."

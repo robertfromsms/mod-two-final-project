@@ -18,10 +18,11 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    byebug
     if @restaurant.save
       redirect_to restaurant_path(@restaurant)
     else
-      flash[:info] = "Something went wrong during user creation. Try again."  
+      flash[:info] = "Something went wrong during restaurant registration. Try again."  
       render :new
     end
   end
@@ -34,7 +35,7 @@ class RestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update(restaurant_params)
-      flash[:info] = "Update successful!"
+      flash[:info] = "Update successful! Logging you out."
       redirect_to pet_path(@pet.id)
     else
       flash[:info] = "Something went wrong. Try again."
@@ -50,7 +51,7 @@ class RestaurantsController < ApplicationController
   #     flash[:info] = "You are not allowed to delete other peoples pets."
   #   end
     redirect_to "/"
-  # end
+  end
 
   private
   def restaurant_params
