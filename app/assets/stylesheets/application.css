@@ -13,9 +13,12 @@
  *= require_tree .
  *= require_self
  */
+<<<<<<< HEAD:app/assets/stylesheets/application.css
 <<<<<<< HEAD:app/assets/stylesheets/application.scss
 
  @import "bootstrap"
 
+=======
+>>>>>>> parent of cb0df78... added bootstrap to the whole app:app/assets/stylesheets/application.css
 =======
 >>>>>>> parent of cb0df78... added bootstrap to the whole app:app/assets/stylesheets/application.css
