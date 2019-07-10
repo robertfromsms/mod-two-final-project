@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  get "/", to: "users#home"
+  get "/", to: "users#home" , as:'home'
   get "/users/login", to: 'sessions#user_new'
   post '/users/login', to: 'sessions#user_create'
   delete '/users/logout', to: 'sessions#user_destroy'

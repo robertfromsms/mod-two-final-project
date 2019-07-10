@@ -1,17 +1,34 @@
+<<<<<<< HEAD
 <h1>Restaurant Login</h1>
+=======
+<h1>New Restaurant</h1>
+>>>>>>> Creating_User_views
 
 <% if flash[:info] %>
   <p style="color: red;"><%= flash[:info] %></p>
 <% end %>
   
+<<<<<<< HEAD
 <%= form_tag('/restaurants/login', method: :post) do %>
   <%= label_tag("Restaurant Username: ") %>
   <%= text_field_tag(:restusername) %>
+=======
+<p>Login form</p>
+<%= form_tag do %>
+  <%= label_tag("Username: ") %>
+  <%= text_field_tag(:username) %>
+>>>>>>> Creating_User_views
   <%= label_tag("Password: ") %>
   <%= password_field_tag(:password) %>
   <%= submit_tag("Login") %>
 <% end %>
 
+<<<<<<< HEAD
 <%= button_to "Register your restaurant", new_restaurant_path, method: :get %>
 
 <%= button_to "Home", "/", method: :get %>
+=======
+<%= button_to "Create New Restaurant", home_path, method: :get %>
+
+<%= button_to "Home", home_path, method: :get %>
+>>>>>>> Creating_User_views
