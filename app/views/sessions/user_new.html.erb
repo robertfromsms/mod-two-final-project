@@ -1,0 +1,17 @@
+<h1>User Login</h1>
+
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
+<% end %>
+  
+<%= form_tag('/users/login', method: :post) do %>
+  <%= label_tag("Username: ") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag("Password: ") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Login") %>
+<% end %>
+
+<%= button_to "Register as an user", new_restaurant_path, method: :get %>
+
+<%= button_to "Home", "/", method: :get %>

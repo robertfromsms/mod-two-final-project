@@ -1,0 +1,17 @@
+<h1>Restaurant Login</h1>
+
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
+<% end %>
+  
+<%= form_tag('/restaurants/login', method: :post) do %>
+  <%= label_tag("Restaurant Username: ") %>
+  <%= text_field_tag(:restusername) %>
+  <%= label_tag("Password: ") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Login") %>
+<% end %>
+
+<%= button_to "Register your restaurant", new_restaurant_path, method: :get %>
+
+<%= button_to "Home", "/", method: :get %>
