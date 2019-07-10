@@ -1,0 +1,9 @@
+<h1>Order Number #<%=@order.id%></h1>
+
+<ul>
+	<%@itemized.each do |item|%>
+		<li><%=item.name%>: <%=item.price%></li>
+	<% end %>
+</ul>
+
+<h3>Total: <%=@total%></h3>

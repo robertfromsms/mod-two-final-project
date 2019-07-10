@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def user_create
-    @user = User.find_by(user_name: params[:user_name])
+    @user = User.find_by(user_name: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:info] = "Login Successful!"
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
   end
 
   def restaurant_create
-    @restaurant = Restaurant.find_by(rest_name: params[:rest_name])
+    @restaurant = Restaurant.find_by(rest_name: params[:restusername])
     if @restaurant && @restaurant.authenticate(params[:password])
       session[:user_id] = @restaurant.id
       flash[:info] = "Login Successful!"

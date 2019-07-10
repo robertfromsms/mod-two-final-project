@@ -1,0 +1,17 @@
+<h1>Restaurant Registration</h1>
+
+<%= form_for @restaurant do |f| %>
+  <%= label_tag("Restaurant Username: ") %>
+  <%= f.text_field :rest_name %><br />
+
+  <%= label_tag("Password: ") %>
+  <%= f.password_field :password %><br />
+
+  <%= label_tag("Restaurant Name: ") %>
+  <%= f.text_field :name %><br />
+
+  <%= label_tag("Address: ") %>
+  <%= f.text_field :address %><br />
+
+  <%= f.submit %>
+<% end %>

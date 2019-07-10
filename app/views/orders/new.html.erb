@@ -1,0 +1,7 @@
+<h1>Which restaurant would you like to order from?</h1>
+
+<%= form_for @order, :url => url_for(:controller => 'orders', :action => 'new2') do |f| %>
+  <h4>Restaurant</h4>
+  <%= f.collection_select(:restaurant_id, Restaurant.all, :name, :id) %><br />
+  <%= f.submit %>
+<% end %>
