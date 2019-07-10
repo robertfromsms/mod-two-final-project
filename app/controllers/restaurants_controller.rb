@@ -50,7 +50,7 @@ class RestaurantsController < ApplicationController
   #     flash[:info] = "You are not allowed to delete other peoples pets."
   #   end
     redirect_to "/"
-  # end
+  end
 
   private
   def restaurant_params
