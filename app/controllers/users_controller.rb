@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  # before_action :authenticate!, except: [:home, :new]
+  before_action :user_authenticate!, except: [:home, :new, :create]
+  
   def home
   end
 
@@ -32,7 +33,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:info] = "Update successful! Logging you out."
-      redirect_to user_path(@user)
+      session[:user_id] = nil
+      redirect_to "/"
     else
       flash[:info] = "Something went wrong. Try again."
       render :edit
@@ -41,11 +43,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    # if @user == current_user
     @user.destroy
-    # else
-    # flash[:info] = "You have to be logged in to do that."
-    # end
+    flash[:info] = "We're sorry to lose you as a customer."
     redirect_to "/"
   end
 
