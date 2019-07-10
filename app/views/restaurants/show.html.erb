@@ -1,0 +1,19 @@
+<h1><%=@restaurant.name%></h1>
+
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
+<% end %>
+
+<% @restaurant_menu.each do |item| %>
+        <ul>
+                <li>
+                        <%=item.name%>: $<%=item.price%>
+                </li>
+        </ul>
+<% end %>
+
+<% if @current_rest && @current_rest.id == @restaurant.id %>
+	<%= button_to "Edit Restaurant Info", edit_restaurant_path(params[:id]), method: :get %>
+	<br>
+	<%= button_to "Logout", restaurants_logout_path, method: :delete %>
+<% end %>

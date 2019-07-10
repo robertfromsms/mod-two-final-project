@@ -1,5 +1,9 @@
 <h1>Restaurant Registration</h1>
 
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
+<% end %>
+
 <%= form_for @restaurant do |f| %>
   <%= label_tag("Restaurant Username: ") %>
   <%= f.text_field :rest_name %><br />
