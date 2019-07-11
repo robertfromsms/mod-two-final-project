@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   delete '/restaurants/logout', to: 'sessions#restaurant_destroy'
   resources :users, only: [:show, :new, :create, :destroy, :edit, :update]
   resources :restaurants
+  post "/orders/new2", to: "orders#new2"
+  get "/orders/new2", to: "orders#redirect"
   resources :orders, only: [:show, :new, :create]
   resources :menu_items, only: [:new, :create, :edit, :update, :destroy]
-  get "/orders/new2", to: "orders#new2"
   # resources :drivers, only: [:show, :new, :create, :destroy, :edit, :update]
 end

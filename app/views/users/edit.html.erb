@@ -1,0 +1,22 @@
+<div class='container'>
+<h1>Edit Your Profile Details</h1>
+
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+	<%= label_tag("Username: ") %>
+	<%= f.text_field(:user_name) %>
+ 	<%= label_tag("Name: ") %>
+  	<%= f.text_field(:name) %>
+   	<%= label_tag("Password: ") %>
+  	<%= f.password_field(:password) %>
+   	<%= label_tag("Address: ") %>
+  	<%= f.text_field(:address) %>
+  <%= f.submit %>
+<% end %>
+
+<%= button_to "Delete your user profile!! DANGEROUS!!!", user_path(params[:id]), method: :delete %>
+
+<div>

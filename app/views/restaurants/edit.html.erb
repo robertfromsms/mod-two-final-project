@@ -1,3 +1,4 @@
+<div class='container'>
 <h1>Edit Restaurant Details</h1>
 
 <% if flash[:info] %>
@@ -27,3 +28,4 @@
 <% end %>
 
 <%= button_to "Delete your restaurant!! DANGEROUS!!!", restaurant_path(params[:id]), method: :delete %>
+</div>

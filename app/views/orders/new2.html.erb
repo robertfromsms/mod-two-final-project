@@ -1,3 +1,4 @@
+<div class='container'>
 <h1><%=@restaurant.name%></h1><br>
 
 <% if flash[:info] %>
@@ -6,10 +7,13 @@
 
 <h1>Menu</h1>
 
-<%= form_for @restaurant, :url => url_for(:controller => 'orders', :action => 'create') do |f| %>
+<%= form_tag orders_path do %>
   <% @restaurant_menu.each do |item| %>
-  	<%= number_field_tag("order_items[][#{item.name}]", value = 0) %><br />
+  	<img src=<%=item.img_url%>><br>
+  	<h4><%=item.name%></h4><%= number_field_tag("order_items[#{item.name}]", value = 0, min: 0, step: 1) %><br />
   <% end %>
-  <%= f.hidden_field(:restaurant, :id) %>
-  <%= f.submit %>
+  <%= hidden_field(:restaurant, :id) %>
+
+  <%= submit_tag "Submit Order" %>
 <% end %>
+</div>
