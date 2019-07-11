@@ -14,5 +14,34 @@
  *= require_self
  */
 
-
+// @import "bootstrap-sprockets"; 
  @import "bootstrap";
+
+body, 
+.main_container{
+   background-image: url("https://images.pexels.com/photos/5929/food-salad-dinner-eating.jpg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");
+   background-size: cover;
+   height: 100%;
+   overflow: hidden;
+   color: white;
+}
+
+ .navbar-brand {
+    color:white !important;
+    font-weight:600;
+ }
+ .navbar {
+    background-color: #D0091B !important;
+ }
+
+ .creation_form {
+    padding-top: 5%;
+    margin: auto;
+    width: 50%;
+ }
+
+ .login_form {
+    
+ }
+
+
