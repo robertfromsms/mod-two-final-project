@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :user_authenticate!, except: [:home, :new, :create]
+  before_action :user_self_action_permission!, except: [:home, :new, :create]
   
   def home
   end
@@ -17,7 +18,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to users_login_path(@users)
+      flash[:info] = "User registration successful. You may now login."
+      redirect_to "/users/login"
     else
       flash[:info] = "Something went wrong during user creation. Try again."
       render :new
@@ -34,7 +36,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:info] = "Update successful! Logging you out."
       session[:user_id] = nil
-      redirect_to "/"
+      redirect_to "/users/login"
     else
       flash[:info] = "Something went wrong. Try again."
       render :edit

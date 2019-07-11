@@ -3,7 +3,12 @@
 <% @restaurants.each do |restaurant| %>
         <ul>
                 <li>
-                        <%= link_to(restaurant.name, restaurant_path(restaurant)) %>
+                		<img src=<%=restaurant.img_url%> >
+                		<br>
+                        <h4><%= link_to(restaurant.name, restaurant_path(restaurant)) %></h4>
+                        <br>
+                        <h4><%= restaurant.description%></h4>
+
                 </li>
         </ul>
 <% end %>

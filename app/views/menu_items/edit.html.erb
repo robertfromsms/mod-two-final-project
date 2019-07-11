@@ -1,0 +1,23 @@
+<h1>Editing Details of <%=@menuitem.name%></h1>
+
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
+<% end %>
+
+<%= form_for @menuitem do |f| %>
+  <%= label_tag("Item Name: ") %>
+  <%= f.text_field :name %><br />
+
+  <%= label_tag("Image URL: ") %>
+  <%= f.text_field :img_url %><br />
+
+  <%= label_tag("Description: ") %>
+  <%= f.text_area :description %><br />
+
+  <%= label_tag("Price: ") %>
+  <%=f.number_field :price, :class => "text_field", step: :any %><br />
+
+  <%= f.submit %>
+<% end %>
+
+<%= button_to "Delete this Item!!! DANGEROUS!!!", menu_item_path(@menuitem), method: :delete %>

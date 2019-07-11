@@ -1,4 +1,9 @@
 <h1><%=@restaurant.name%></h1><br>
+
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
+<% end %>
+
 <h1>Menu</h1>
 
 <%= form_for @restaurant, :url => url_for(:controller => 'orders', :action => 'create') do |f| %>

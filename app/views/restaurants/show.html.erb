@@ -4,16 +4,31 @@
   <p style="color: red;"><%= flash[:info] %></p>
 <% end %>
 
+<h1>Menu</h1>
+
 <% @restaurant_menu.each do |item| %>
         <ul>
                 <li>
-                        <%=item.name%>: $<%=item.price%>
+                		<img src=<%=item.img_url%> >
+                		<br>
+                        <%=item.name%>
+                        <br>
+                        <%=item.description%>
+                        <br> 
+                        $<%=item.price%>
+                        <br>
+                        <% if @current_rest && @current_rest.id == @restaurant.id %>
+							<%= button_to "Edit this Item", edit_menu_item_path(item), method: :get %>
+						<% end %>
+
                 </li>
         </ul>
 <% end %>
 
 <% if @current_rest && @current_rest.id == @restaurant.id %>
 	<%= button_to "Edit Restaurant Info", edit_restaurant_path(params[:id]), method: :get %>
+	<br>
+	<%= button_to "Add a Menu Item to Your Restaurant", new_menu_item_path, method: :get %>
 	<br>
 	<%= button_to "Logout", restaurants_logout_path, method: :delete %>
 <% end %>
