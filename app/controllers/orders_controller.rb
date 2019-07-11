@@ -1,11 +1,11 @@
 class OrdersController < ApplicationController
-  # before_action :authenticate!
+  before_action :user_authenticate!
 
   def show
     @order = Order.find(params[:id])
-    @itemized = @order.menuitems
+    belong_to_user?(@order)
+    @itemized = @order.menu_items
     @total = (@itemized.map {|item| item.price}).sum
-    render :show
   end
 
   def new
@@ -20,45 +20,14 @@ class OrdersController < ApplicationController
   end
 
   def create
-    byebug
     @user = current_user
     @restaurant = Restaurant.find(params[:restaurant][:id])
     @order = Order.new(user_id: @user.id, restaurant_id: @restaurant.id)
-    if @order.save || 
+    if @order.save
       redirect_to user_path(@user)
     else
       flash[:info] = "Something went wrong while completing your order. Try again."
       render :new
     end
   end
-
-  # def edit
-  #   @user = User.find(params[:id])
-  #   render :edit
-  # end
-
-  # def update
-  #   @user = User.find(params[:id])
-  #   if @user.update(user_params)
-  #     redirect_to user_path(@user)
-  #   else
-  #     flash[:info] = "Something went wrong. Try again."
-  #     render :edit
-  #   end
-  # end
-
-  # def destroy
-  #   @user = User.find(params[:id])
-  #   # if @user == current_user
-  #   @user.destroy
-  #   # else
-  #   # flash[:info] = "You have to be logged in to do that."
-  #   # end
-  #   redirect_to "/"
-  # end
-
-  # private
-  # def user_params
-  #   params.require(:user).permit(:user_name, :name, :address, :password)
-  # end
 end
