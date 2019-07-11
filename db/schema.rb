@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2019_07_08_174756) do
 
   create_table "menu_items", force: :cascade do |t|
     t.string "name"
+    t.string "img_url"
+    t.string "description"
     t.float "price"
     t.integer "restaurant_id"
     t.datetime "created_at", null: false
@@ -50,6 +52,8 @@ ActiveRecord::Schema.define(version: 2019_07_08_174756) do
   create_table "restaurants", force: :cascade do |t|
     t.string "rest_name"
     t.string "name"
+    t.string "img_url"
+    t.string "description"
     t.string "password_digest"
     t.string "address"
     t.datetime "created_at", null: false
