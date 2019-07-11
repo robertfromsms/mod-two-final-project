@@ -4,4 +4,5 @@ class MenuItem < ApplicationRecord
 	belongs_to :restaurant
 
 	validates :price, presence: true
+	validates :name, presence: true
 end

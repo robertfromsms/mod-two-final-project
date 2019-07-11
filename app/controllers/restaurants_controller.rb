@@ -1,5 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :rest_authenticate!, except: [:index, :show, :new, :create]
+  before_action :rest_self_action_permission!, except: [:index, :show, :new, :create]
 
   def index
     @restaurants = Restaurant.all
@@ -21,6 +22,7 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     if @restaurant.save
+      flash[:info] = "Restaurant registration successful. You may login now."
       redirect_to "/restaurants/login"
     else
       flash[:info] = "Something went wrong during restaurant registration. Try again."  
@@ -38,7 +40,7 @@ class RestaurantsController < ApplicationController
     if @restaurant.update(restaurant_params)
       flash[:info] = "Update successful! Logging you out."
       session[:restuser_id] = nil
-      redirect_to "/"
+      redirect_to "/restaurants/login"
     else
       flash[:info] = "Something went wrong. Try again."
       render :edit
@@ -54,6 +56,6 @@ class RestaurantsController < ApplicationController
 
   private
   def restaurant_params
-    params.require(:restaurant).permit(:rest_name, :name, :address, :password)
+    params.require(:restaurant).permit(:rest_name, :name, :img_url, :description, :address, :password)
   end
 end
