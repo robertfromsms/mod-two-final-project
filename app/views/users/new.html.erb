@@ -1,18 +1,19 @@
-
-
 <div class='container'>
 <h1>New User Sign Up</h1>
 
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
+<% end %>
+
 <%= form_for(@user) do |f| %>
- <%= label_tag("Username: ") %>
-<%= f.text_field(:user_name) %>
- <%= label_tag("Name: ") %>
-  <%= f.text_field(:name) %>
-   <%= label_tag("Password: ") %>
-  <%= f.password_field(:password) %>
-   <%= label_tag("Address: ") %>
-  <%= f.text_field(:address) %>
-  <%# <%= f.collection_select(:cohort_id, Cohort.all, :id, :name) %> 
+	<%= label_tag("Username: ") %>
+	<%= f.text_field(:user_name) %>
+ 	<%= label_tag("Name: ") %>
+  	<%= f.text_field(:name) %>
+   	<%= label_tag("Password: ") %>
+  	<%= f.password_field(:password) %>
+   	<%= label_tag("Address: ") %>
+  	<%= f.text_field(:address) %>
   <%= f.submit %>
 <% end %>
 

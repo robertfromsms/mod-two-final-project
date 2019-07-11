@@ -1,7 +1,22 @@
-
+<div class='container'>
 <h1><%= @user.name%></h1>
 
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
+<% end %>
 
-<%# show what ever flash message error here %>
+<h4> <%= button_to "Make an Order!", new_order_path, method: :get %> </h4>
+<br>
+<h4> <%= button_to "Logout", users_logout_path, method: :delete %> </h4>
 
-<%# #a link to last 5 orders  %>
+<h4>Last 5 Orders:</h4> <br>
+
+<% @last_5_orders.each do |order| %>
+    <ul>
+        <li>
+            <h4>Order#: <%= link_to(order.id, order_path(order)) %>, Order placed: <%= order.created_at%></h4>
+        </li>
+    </ul>
+<% end %>
+
+</div>

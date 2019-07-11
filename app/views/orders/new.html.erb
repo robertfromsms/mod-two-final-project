@@ -1,7 +1,20 @@
+<div class='container'>
 <h1>Which restaurant would you like to order from?</h1>
 
-<%= form_for @order, :url => url_for(:controller => 'orders', :action => 'new2') do |f| %>
-  <h4>Restaurant</h4>
-  <%= f.collection_select(:restaurant_id, Restaurant.all, :name, :id) %><br />
-  <%= f.submit %>
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
 <% end %>
+
+<%= form_for @order, :url => url_for(:controller => 'orders', :action => 'new2') do |f| %>
+	<% @restaurants.each do |restaurant| %>
+		<div>
+		<img src=<%=restaurant.img_url%> >
+		<br>
+        <h4><%= restaurant.description%></h4>
+		<br>
+		<h4><input type="radio" name="restaurant_id" value=<%=restaurant.id.to_s%>> <%=restaurant.name%></h4>
+		</div>
+	<% end %>
+  	<%= f.submit %>
+<% end %>
+</div>

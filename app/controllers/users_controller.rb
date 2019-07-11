@@ -7,6 +7,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    sorted_orders = @user.orders.sort do |order1, order2|
+      order2.created_at <=> order1.created_at
+    end
+    @last_5_orders = sorted_orders[0..5]
     render :show
   end
 

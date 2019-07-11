@@ -1,3 +1,4 @@
+<div class='container'>
 <h1>Order Number #<%=@order.id%></h1>
 
 <ul>
@@ -7,3 +8,6 @@
 </ul>
 
 <h3>Total: <%=@total%></h3>
+
+<%= button_to "Return to your profile page", user_path(@order.user), method: :get %>
+</div>
