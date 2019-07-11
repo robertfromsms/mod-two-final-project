@@ -4,7 +4,10 @@
   <p style="color: red;"><%= flash[:info] %></p>
 <% end %>
   
+
 <%= form_tag('/users/login', method: :post) do %>
+<p>Login form</p>
+<%= form_tag do %>
   <%= label_tag("Username: ") %>
   <%= text_field_tag(:username) %>
   <%= label_tag("Password: ") %>
@@ -12,6 +15,7 @@
   <%= submit_tag("Login") %>
 <% end %>
 
-<%= button_to "Register as an user", new_restaurant_path, method: :get %>
+<%= button_to "Register as an user", new_user_path, method: :get %>
 
 <%= button_to "Home", "/", method: :get %>
+<%end%>

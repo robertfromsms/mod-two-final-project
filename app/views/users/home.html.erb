@@ -1,11 +1,9 @@
+<div class='container'>
 <h1>Home</h1>
-
-<% if flash[:info] %>
-  <p style="color: red;"><%= flash[:info] %></p>
-<% end %>
-
 <%= button_to "Users, Click Here!", users_login_path, method: :get %>
 <br>
 <%= button_to "Restaurant Managers, Click Here!", restaurants_login_path, method: :get %>
 <br>
 <%= button_to "Complete Restaurants List", restaurants_path, method: :get %>
+</div>
+
