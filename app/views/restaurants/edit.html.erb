@@ -1,11 +1,6 @@
-<div class='container'>
 <h1>Edit Restaurant Details</h1>
 
-<% if flash[:info] %>
-  <p style="color: red;"><%= flash[:info] %></p>
-<% end %>
-
-<%= form_for @restaurant do |f| %>
+<%= form_for @restaurant, :html => {class: 'ui form'} do |f| %>
   <%= label_tag("Restaurant Username: ") %>
   <%= f.text_field :rest_name %><br />
 
@@ -28,4 +23,3 @@
 <% end %>
 
 <%= button_to "Delete your restaurant!! DANGEROUS!!!", restaurant_path(params[:id]), method: :delete %>
-</div>

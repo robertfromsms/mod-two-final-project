@@ -1,12 +1,7 @@
 <div class='container'>
 <h1>User Login</h1>
 
-<% if flash[:info] %>
-  <p style="color: red;"><%= flash[:info] %></p>
-<% end %>
-  
-
-<%= form_tag('/users/login', method: :post) do %>
+<%= form_tag('/users/login', method: :post, :class => 'ui form') do %>
 <p>Login form</p>
 <%= form_tag do %>
   <%= label_tag("Username: ") %>

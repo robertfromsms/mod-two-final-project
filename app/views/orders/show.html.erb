@@ -1,11 +1,11 @@
 <div class='container'>
 <h1>Order Number #<%=@order.id%></h1>
 
-<ul>
+<ol>
 	<%@itemized.each do |item|%>
 		<li><%=item.name%>: <%=item.price%></li>
 	<% end %>
-</ul>
+</ol>
 
 <h3>Total: <%=@total%></h3>
 

@@ -1,38 +1,57 @@
-<div class='container'>
+<div class="ui card first">
+  <div class="image">
+    <img src=<%=@restaurant.img_url%>>
+  </div>
+  <div class="content">
+    <a class="header"><%=@restaurant.name%></a>
+    <div class="meta">
+      <span class="date">Joined in <%=@restaurant.created_at.year%></span>
+    </div>
+    <div class="description">
+        <% if @current_rest && @current_rest.id == @restaurant.id %>
+            <%= button_to "Edit Restaurant Info", edit_restaurant_path(params[:id]), method: :get %>
+            <%= button_to "Add a Menu Item to Your Restaurant", new_menu_item_path, method: :get %>
+        <% end %>
+    </div>
+  </div>
+  <div class="extra content">
+    <a>
+        <% if @current_rest && @current_rest.id == @restaurant.id %>
+            <%= button_to "Logout", restaurants_logout_path, method: :delete %>
+        <% end %>
+    </a>
+  </div>
+</div>
 
-<h1><%=@restaurant.name%></h1>
-
-<% if flash[:info] %>
-  <p style="color: red;"><%= flash[:info] %></p>
-<% end %>
 
 <h1>Menu</h1>
 
+<center>
+
 <% @restaurant_menu.each do |item| %>
-        <ul>
-                <li>
-                		<img src=<%=item.img_url%> >
-                		<br>
-                        <%=item.name%>
-                        <br>
-                        <%=item.description%>
-                        <br> 
-                        $<%=item.price%>
-                        <br>
-                        <% if @current_rest && @current_rest.id == @restaurant.id %>
-							<%= button_to "Edit this Item", edit_menu_item_path(item), method: :get %>
-						<% end %>
 
-                </li>
-        </ul>
+                        <div class="ui card">
+                          <div class="image">
+                            <img src=<%=item.img_url%>>
+                          </div>
+                          <div class="content">
+                            <a class="header"><%=item.name%></a>
+                            <div class="meta">
+                              <span class="date">Joined in 2013</span>
+                            </div>
+                            <div class="description">
+                              <%=item.description%>
+                              $<%=item.price%>
+                            </div>
+                          </div>
+                          <div class="extra content">
+                            <a>
+                                <% if @current_rest && @current_rest.id == @restaurant.id %>
+                                    <%= button_to "Edit this Item", edit_menu_item_path(item), method: :get %>
+                                <% end %>
+                            </a>
+                          </div>
+                        </div>
 <% end %>
 
-<% if @current_rest && @current_rest.id == @restaurant.id %>
-	<%= button_to "Edit Restaurant Info", edit_restaurant_path(params[:id]), method: :get %>
-	<br>
-	<%= button_to "Add a Menu Item to Your Restaurant", new_menu_item_path, method: :get %>
-	<br>
-	<%= button_to "Logout", restaurants_logout_path, method: :delete %>
-<% end %>
-
-</div>
+</center>

@@ -1,19 +1,26 @@
-<div class='container'>
-<h1><%=@restaurant.name%></h1><br>
 
-<% if flash[:info] %>
-  <p style="color: red;"><%= flash[:info] %></p>
-<% end %>
+<h1><%=@restaurant.name%></h1>
 
 <h1>Menu</h1>
 
-<%= form_tag orders_path do %>
+<%= form_tag orders_path, {:class => 'ui form'} do %>
   <% @restaurant_menu.each do |item| %>
-  	<img src=<%=item.img_url%>><br>
-  	<h4><%=item.name%></h4><%= number_field_tag("order_items[#{item.name}]", value = 0, min: 0, step: 1) %><br />
+	<div class="ui card">
+	  <div class="image">
+	    <img src=<%=item.img_url%>>
+	  </div>
+	  <div class="content">
+	    <a class="header"><%=item.name%></a>
+	    <div class="description">
+	      <%= number_field_tag("order_items[#{item.name}]", value = 0, min: 0, step: 1) %>
+	    </div>
+	  </div>
+	  <div class="extra content">
+	  </div>
+	</div>
   <% end %>
+  
   <%= hidden_field(:restaurant, :id) %>
-
+  <br>
   <%= submit_tag "Submit Order" %>
 <% end %>
-</div>
