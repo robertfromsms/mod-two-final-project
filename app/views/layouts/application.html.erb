@@ -5,19 +5,31 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.css">
    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #D0091B !important;">
+
+<ul class="nav">
+  <li><a href="/">Home</a></li>
+  <li><a href="/restaurants">All Restaurants</a></li>
+  <li><a href="/users/login">User Login</a></li>
+  <li><a href="/restaurants/login">Restaurant Login</a></li>
+</ul>
+
+<% if flash[:info] %>
+  <p style="color: red;"><%= flash[:info] %></p>
+<% end %>
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #423597 !important;">
   <a class="navbar-brand" href="/">Deliverd</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   
-</nav>
+</nav> -->
 <div class='container'>
     <%= yield %>
 </div>

@@ -1,11 +1,6 @@
-<div class='container'>
 <h1>Adding a Menu Item to Your Restaurant</h1>
 
-<% if flash[:info] %>
-  <p style="color: red;"><%= flash[:info] %></p>
-<% end %>
-
-<%= form_for @menuitem do |f| %>
+<%= form_for @menuitem, :html => {class: 'ui form'} do |f| %>
   <%= label_tag("Item Name: ") %>
   <%= f.text_field :name %><br />
 
@@ -20,4 +15,3 @@
 
   <%= f.submit %>
 <% end %>
-</div>

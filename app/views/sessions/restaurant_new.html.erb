@@ -1,11 +1,6 @@
-<div class='container'>
 <h1>Restaurant Login</h1>
-
-<% if flash[:info] %>
-  <p style="color: red;"><%= flash[:info] %></p>
-<% end %>
   
-<%= form_tag('/restaurants/login', method: :post) do %>
+<%= form_tag('/restaurants/login', method: :post, :class => 'ui form') do %>
   <%= label_tag("Restaurant Username: ") %>
   <%= text_field_tag(:restusername) %>
   <%= label_tag("Password: ") %>
@@ -16,4 +11,3 @@
 <%= button_to "Register your restaurant", new_restaurant_path, method: :get %>
 
 <%= button_to "Home", "/", method: :get %>
-</div>
